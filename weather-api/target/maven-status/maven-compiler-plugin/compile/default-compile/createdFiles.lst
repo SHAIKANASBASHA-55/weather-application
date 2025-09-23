@@ -1,0 +1,8 @@
+com\example\weather\api\CityDataParser.class
+com\example\weather\api\Utils.class
+com\example\weather\api\CacheEntry.class
+com\example\weather\api\controller\WeatherAPIController.class
+com\example\weather\api\model\ListResponse.class
+com\example\weather\api\model\CityWeatherData.class
+com\example\weather\api\model\CityData.class
+com\example\weather\api\WeatherApiApplication.class

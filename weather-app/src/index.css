@@ -1,0 +1,310 @@
+/* =========================
+   Global Styles
+========================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background: #f9fafb;
+  color: #333;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   Header (fixed & compact)
+========================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 69px;
+  padding: 0 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 2000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px; /* keeps content from stretching */
+  position: relative; /* so menu-btn can sit absolute */
+}
+
+/* Logo */
+.header-logo {
+  width: 50px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 10px;
+  position:-webkit-sticky;
+}
+
+/* Title */
+.header-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #052e85;
+  position:initial;
+  margin: 0;
+}
+
+/* Menu button on left */
+.menu-btn {
+  position: absolute;
+  right:-10%;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #374151;
+}
+
+/* =========================
+   Search Bar
+========================= */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 100px 0 20px; /* push below fixed header */
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.search-bar input {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: #2563eb;
+}
+
+.search-bar button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-bar button:hover {
+  background: #1e40af;
+}
+
+.search-bar .loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   City Cards
+========================= */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* keeps cards centered */
+  box-sizing: border-box;
+  justify-items: center; /* align cards properly */
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  width: 100%;
+  max-width: 350px; /* prevents card from being too wide */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.top-division {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  color: #fff;
+}
+
+.city-name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.city-time {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.weather-desc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.temp {
+  font-size: 32px;
+  margin: 0;
+}
+
+.temp-min,
+.temp-max {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* Bottom details */
+.bottom-division {
+  padding: 12px 16px;
+  font-size: 14px;
+  background: #f9fafb;
+}
+
+.extra-details p,
+.sun p,
+.wind p {
+  margin: 4px 0;
+}
+
+/* Forecast section */
+.forecast-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.forecast-card {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Buttons */
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+.favorite-btn,
+.remove-btn {
+  flex: 1;
+  margin: 0 4px;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.favorite-btn {
+  background: #fcd34d;
+  color: #000;
+}
+
+.favorite-btn:hover {
+  background: #fbbf24;
+}
+
+.remove-btn {
+  background: #f87171;
+  color: #fff;
+}
+
+.remove-btn:hover {
+  background: #ef4444;
+}
+
+/* =========================
+   Sidebar
+========================= */
+.sidebar {
+  position: fixed;
+  top: 69px; /* below header (matched header height) */
+  right: -280px;
+  width: 260px;
+  height: calc(100% - 69px);
+  background: #ffffff;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1500;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.sidebar p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #555;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  padding: 16px;
+  text-align: center;
+  background: #f1f5f9;
+  border-top: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #777;
+  margin-top: auto;
+}

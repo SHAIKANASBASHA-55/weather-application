@@ -1,0 +1,327 @@
+{
+  "cnt": 8,
+  "list": [
+    {
+      "coord": {
+        "lon": 79.8478,
+        "lat": 6.9319
+      },
+      "sys": {
+        "country": "LK",
+        "timezone": 19800,
+        "sunrise": 1711240962,
+        "sunset": 1711284652
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "main": {
+        "temp": 26.97,
+        "feels_like": 29.14,
+        "temp_min": 26.97,
+        "temp_max": 26.97,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 1010,
+        "humidity": 74
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 1.39,
+        "deg": 55
+      },
+      "clouds": {
+        "all": 54
+      },
+      "dt": 1711249747,
+      "id": 1248991,
+      "name": "Colombo"
+    },
+    {
+      "coord": {
+        "lon": 139.6917,
+        "lat": 35.6895
+      },
+      "sys": {
+        "country": "JP",
+        "timezone": 32400,
+        "sunrise": 1711226354,
+        "sunset": 1711270541
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "main": {
+        "temp": 13.89,
+        "feels_like": 13.11,
+        "temp_min": 10.79,
+        "temp_max": 15.33,
+        "pressure": 1020,
+        "humidity": 68
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 1.54,
+        "deg": 80
+      },
+      "clouds": {
+        "all": 75
+      },
+      "dt": 1711249753,
+      "id": 1850147,
+      "name": "Tokyo"
+    },
+    {
+      "coord": {
+        "lon": -2.9779,
+        "lat": 53.4106
+      },
+      "sys": {
+        "country": "GB",
+        "timezone": 0,
+        "sunrise": 1711260230,
+        "sunset": 1711305131
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "main": {
+        "temp": 7.1,
+        "feels_like": 2.99,
+        "temp_min": 6.14,
+        "temp_max": 7.68,
+        "pressure": 1007,
+        "humidity": 84
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 7.72,
+        "deg": 300
+      },
+      "clouds": {
+        "all": 75
+      },
+      "dt": 1711249755,
+      "id": 2644210,
+      "name": "Liverpool"
+    },
+    {
+      "coord": {
+        "lon": 2.3488,
+        "lat": 48.8534
+      },
+      "sys": {
+        "country": "FR",
+        "timezone": 3600,
+        "sunrise": 1711259063,
+        "sunset": 1711303742
+      },
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01n"
+        }
+      ],
+      "main": {
+        "temp": 4.05,
+        "feels_like": 0.62,
+        "temp_min": 2.99,
+        "temp_max": 4.87,
+        "pressure": 1013,
+        "humidity": 90
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 4.12,
+        "deg": 240
+      },
+      "clouds": {
+        "all": 0
+      },
+      "dt": 1711249754,
+      "id": 2988507,
+      "name": "Paris"
+    },
+    {
+      "coord": {
+        "lon": 151.2073,
+        "lat": -33.8679
+      },
+      "sys": {
+        "country": "AU",
+        "timezone": 39600,
+        "sunrise": 1711224074,
+        "sunset": 1711267295
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "main": {
+        "temp": 25.12,
+        "feels_like": 25.38,
+        "temp_min": 22.44,
+        "temp_max": 28.52,
+        "pressure": 1018,
+        "humidity": 65
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 4.63,
+        "deg": 90
+      },
+      "clouds": {
+        "all": 75
+      },
+      "dt": 1711249743,
+      "id": 2147714,
+      "name": "Sydney"
+    },
+    {
+      "coord": {
+        "lon": -71.0598,
+        "lat": 42.3584
+      },
+      "sys": {
+        "country": "US",
+        "timezone": -14400,
+        "sunrise": 1711190487,
+        "sunset": 1711234784
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "main": {
+        "temp": 1.52,
+        "feels_like": -4.95,
+        "temp_min": 0.34,
+        "temp_max": 2.54,
+        "pressure": 1006,
+        "humidity": 91
+      },
+      "visibility": 10000,
+      "wind": {
+        "speed": 9.77,
+        "deg": 330
+      },
+      "clouds": {
+        "all": 100
+      },
+      "dt": 1711250098,
+      "id": 4930956,
+      "name": "Boston"
+    },
+    {
+      "coord": {
+        "lon": 121.4581,
+        "lat": 31.2222
+      },
+      "sys": {
+        "country": "CN",
+        "timezone": 28800,
+        "sunrise": 1711230777,
+        "sunset": 1711274868
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        },
+        {
+          "id": 701,
+          "main": "Mist",
+          "description": "mist",
+          "icon": "50d"
+        }
+      ],
+      "main": {
+        "temp": 18.9,
+        "feels_like": 19.3,
+        "temp_min": 15.93,
+        "temp_max": 20.52,
+        "pressure": 1014,
+        "humidity": 94
+      },
+      "visibility": 2700,
+      "wind": {
+        "speed": 2,
+        "deg": 330
+      },
+      "clouds": {
+        "all": 40
+      },
+      "dt": 1711249747,
+      "id": 1796236,
+      "name": "Shanghai"
+    },
+    {
+      "coord": {
+        "lon": 10.7461,
+        "lat": 59.9127
+      },
+      "sys": {
+        "country": "NO",
+        "timezone": 3600,
+        "sunrise": 1711256735,
+        "sunset": 1711302040
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04n"
+        }
+      ],
+      "main": {
+        "temp": 2.46,
+        "feels_like": 2.46,
+        "temp_min": 0.73,
+        "temp_max": 4.27,
+        "pressure": 994,
+        "sea_level": 994,
+        "grnd_level": 990,
+        "humidity": 96
+      },
+      "visibility": 4193,
+      "wind": {
+        "speed": 1.06,
+        "deg": 12
+      },
+      "clouds": {
+        "all": 100
+      },
+      "dt": 1711249758,
+      "id": 3143244,
+      "name": "Oslo"
+    }
+  ]
+}
