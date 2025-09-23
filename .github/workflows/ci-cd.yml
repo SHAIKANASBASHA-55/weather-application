@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout code
-      - name: Checkout repository
+      # 1️⃣ Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       # ---- Build React frontend ----
@@ -31,36 +31,37 @@ jobs:
           cd weather-app
           npm run build
 
-      # ---- Build Spring Boot backend ----
-      - name: Setup JDK
+      # ---- Setup JDK + Maven ----
+      - name: Setup Java
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
+          cache: maven
 
+      # ---- Build Spring Boot backend using system Maven ----
       - name: Build backend
         run: |
           cd weather-api
-          ./mvnw clean package -DskipTests
+          mvn clean package -DskipTests
 
       # ---- Run Spring Boot backend ----
       - name: Run backend for testing
         run: |
           cd weather-api
           nohup java -jar target/*.jar &
-          # Wait for backend to start
+          # wait until backend is up
           until curl -s http://localhost:3001/actuator/health; do
             echo "Waiting for backend..."
             sleep 5
           done
 
       # ---- Test React frontend ----
-      - name: Serve and test frontend
+      - name: Test React frontend
         run: |
           cd weather-app
           npm install -g serve
           serve -s build -l 3000 &
-          # Wait for frontend to start
           sleep 10
           curl -f http://localhost:3000 || exit 1
 
