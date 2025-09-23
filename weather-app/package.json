@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://karthiknvd.github.io/weather-application",
-  "proxy": "http://localhost:8080/weather",
+  "proxy": "http://localhost:3001/weather",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
