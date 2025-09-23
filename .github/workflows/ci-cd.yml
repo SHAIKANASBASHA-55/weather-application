@@ -1,0 +1,70 @@
+name: Weather App CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # ---- Build React frontend ----
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        run: |
+          cd weather-app
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd weather-app
+          npm run build
+
+      # ---- Build Spring Boot backend ----
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build backend
+        run: |
+          cd weather-api
+          ./mvnw clean package -DskipTests
+
+      # ---- Run Spring Boot backend ----
+      - name: Run backend for testing
+        run: |
+          cd weather-api
+          nohup java -jar target/*.jar &
+          # Wait for backend to start
+          until curl -s http://localhost:3001/actuator/health; do
+            echo "Waiting for backend..."
+            sleep 5
+          done
+
+      # ---- Test React frontend ----
+      - name: Serve and test frontend
+        run: |
+          cd weather-app
+          npm install -g serve
+          serve -s build -l 3000 &
+          # Wait for frontend to start
+          sleep 10
+          curl -f http://localhost:3000 || exit 1
+
+      # ---- Test backend API ----
+      - name: Test backend API
+        run: |
+          curl -f http://localhost:3001/actuator/health || exit 1
