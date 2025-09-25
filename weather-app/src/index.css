@@ -39,8 +39,8 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1200px; /* keeps content from stretching */
-  position: relative; /* so menu-btn can sit absolute */
+  max-width: 1200px;
+  position: relative;
 }
 
 /* Logo */
@@ -49,7 +49,7 @@ header {
   height: 60px;
   object-fit: contain;
   margin-right: 10px;
-  position:-webkit-sticky;
+  position: -webkit-sticky;
 }
 
 /* Title */
@@ -57,14 +57,14 @@ header {
   font-size: 28px;
   font-weight: 600;
   color: #052e85;
-  position:initial;
+  position: initial;
   margin: 0;
 }
 
 /* Menu button on left */
 .menu-btn {
   position: absolute;
-  right:-10%;
+  right: -10%;
   background: none;
   border: none;
   font-size: 22px;
@@ -80,7 +80,7 @@ header {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin: 100px 0 20px; /* push below fixed header */
+  margin: 100px 0 20px;
   width: 100%;
   max-width: 1000px;
   padding: 0 20px;
@@ -142,9 +142,9 @@ header {
   gap: 20px;
   padding: 20px;
   width: 100%;
-  max-width: 1200px; /* keeps cards centered */
+  max-width: 1200px;
   box-sizing: border-box;
-  justify-items: center; /* align cards properly */
+  justify-items: center;
 }
 
 .card {
@@ -154,7 +154,7 @@ header {
   overflow: hidden;
   transition: transform 0.2s ease;
   width: 100%;
-  max-width: 350px; /* prevents card from being too wide */
+  max-width: 350px;
 }
 
 .card:hover {
@@ -265,36 +265,57 @@ header {
 }
 
 /* =========================
-   Sidebar
+   Sidebar Fixed
 ========================= */
 .sidebar {
   position: fixed;
-  top: 69px; /* below header (matched header height) */
-  right: -280px;
-  width: 260px;
+  top: 69px; /* right below header */
+  right: 0; /* start hidden by default */
+  width: 260px; /* adjust width if needed */
+  max-width: 100%; /* never overflow screen */
   height: calc(100% - 69px);
-  background: #ffffff;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  background: #1b1b1b;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  transition: right 0.3s ease;
+  transition: transform 0.3s ease;
   z-index: 1500;
   overflow-y: auto;
+  transform: translateX(100%); /* hide initially */
+  border-left: 1px solid #333;
 }
 
+/* Open state */
 .sidebar.open {
-  right: 0;
+  transform: translateX(0);
 }
 
+/* Inner content */
 .sidebar h2 {
   font-size: 18px;
   margin-bottom: 12px;
+  color: #e0e0e0;
 }
 
 .sidebar p {
   font-size: 14px;
   margin: 8px 0;
-  color: #555;
+  color: #e0e0e0;
 }
+
+/* Scrollbar for sidebar (optional) */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 3px;
+}
+
 
 /* =========================
    Footer
@@ -310,7 +331,7 @@ footer {
 }
 
 /* =========================
-   Weather News (design-only)
+   Weather News
 ========================= */
 .wn-wrapper {
   width: 100%;
@@ -458,5 +479,387 @@ footer {
   .wn-list {
     grid-template-columns: 1fr;
   }
-  .wn-card-left { width: 72px; min-width: 72px; }
+  .wn-card-left {
+    width: 72px;
+    min-width: 72px;
+  }
+}
+
+/* =========================
+   THEMES FIXED
+========================= */
+
+/* Default Theme */
+body.default {
+  background: #f9fafb;
+  color: #333;
+}
+
+body.default header {
+  background: #ffffff;
+  color: #052e85;
+}
+
+/* Cool Blue Theme */
+body.cool-blue {
+  background: #e6f0ff;
+  color: #0b1d5a;
+}
+
+body.cool-blue header {
+  background: #1e3a8a;
+  color: #ffffff; /* header title readable now */
+}
+
+body.cool-blue .header-title {
+  color: #ffffff;
+}
+
+body.cool-blue .search-bar input,
+body.cool-blue .card,
+body.cool-blue .wn-wrapper {
+  background: #cfe0ff;
+  color: #0b1d5a;
+  border-color: #9bbfff;
+}
+
+body.cool-blue .card .top-division {
+  color: #ffffff; /* weather description readable */
+}
+
+body.cool-blue .favorite-btn {
+  background: #3b82f6;
+  color: #fff;
+}
+
+body.cool-blue .favorite-btn:hover {
+  background: #2563eb;
+}
+
+body.cool-blue .remove-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+body.cool-blue .remove-btn:hover {
+  background: #dc2626;
+}
+
+body.cool-blue .wn-card {
+  background: #dbe8ff;
+  border: 1px solid #9bbfff;
+}
+
+body.cool-blue .wn-card-left {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* =========================
+   Modern Dark Theme Fixed
+========================= */
+body.modern-dark {
+  background: #111; /* true dark */
+  color: #e0e0e0; /* default text color */
+}
+
+body.modern-dark header {
+  background: #1b1b1b;
+  color: #e0e0e0;
+}
+
+body.modern-dark .header-title {
+  color: #e0e0e0;
+}
+
+body.modern-dark .search-bar input {
+  background: #1b1b1b;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+body.modern-dark .search-bar button {
+  background: #2563eb;
+  color: #fff;
+}
+
+body.modern-dark .search-bar button:hover {
+  background: #1e40af;
+}
+
+/* Cards */
+body.modern-dark .card {
+  background: #1b1b1b;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+body.modern-dark .top-division {
+  color: #e0e0e0; /* top section text readable */
+}
+
+body.modern-dark .bottom-division {
+  background: #161616;
+  color: #e0e0e0; /* bottom details visible */
+}
+
+body.modern-dark .extra-details p,
+body.modern-dark .sun p,
+body.modern-dark .wind p {
+  color: #e0e0e0;
+}
+
+body.modern-dark .forecast-section {
+  background: #1b1b1b;
+}
+
+body.modern-dark .forecast-card {
+  color: #e0e0e0;
+}
+
+/* Card bottom buttons */
+body.modern-dark .card-buttons {
+  background: #161616; /* match bottom-division contrast */
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Favorite & Remove Buttons */
+body.modern-dark .favorite-btn,
+body.modern-dark .remove-btn {
+  flex: 1;
+  margin: 0 4px;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* subtle pop */
+}
+
+body.modern-dark .favorite-btn {
+  background: #fbbf24;
+  color: #000;
+}
+
+body.modern-dark .favorite-btn:hover {
+  background: #f59e0b;
+}
+
+body.modern-dark .remove-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+body.modern-dark .remove-btn:hover {
+  background: #dc2626;
+}
+
+/* Weather News */
+body.modern-dark .wn-wrapper {
+  background: #1b1b1b;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+body.modern-dark .wn-card {
+  background: #161616;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+body.modern-dark .wn-card-left {
+  background: #374151;
+  color: #fff;
+}
+
+body.modern-dark .wn-card-right {
+  color: #e0e0e0;
+}
+
+body.modern-dark .wn-city,
+body.modern-dark .wn-time,
+body.modern-dark .wn-title,
+body.modern-dark .wn-body {
+  color: #e0e0e0;
+}
+
+/* Footer */
+body.modern-dark footer {
+  background: #161616; /* darker footer */
+  color: #e0e0e0;     /* readable text matching theme */
+  border-top: 1px solid #333;
+}
+
+/* =========================
+   Theme Selector (Top Right in Header)
+========================= */
+.theme-selector {
+  position: absolute; /* place inside header */
+  top: 0%; 
+  right: 20px; /* push to right edge */
+  transform: translateY(20%); /* slight vertical adjust since top:0% */
+  background: #fff;   /* default light */
+  color: #111;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 5; /* above header bg */
+}
+
+/* Theme label */
+.theme-selector label {
+  font-weight: 500;
+}
+
+/* Theme dropdown */
+.theme-selector select {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Hover & focus */
+.theme-selector select:hover,
+.theme-selector select:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/* Cool Blue overrides */
+body.cool-blue .theme-selector {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+body.cool-blue .theme-selector select {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+/* Modern Dark overrides */
+body.modern-dark .theme-selector {
+  background: #1b1b1b;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+body.modern-dark .theme-selector select {
+  background: #161616;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+
+
+/* Optional: align beside sidebar button */
+.header-inner .theme-selector {
+  display: inline-flex;
+  margin-left: auto; /* push it to the right of header controls */
+}
+
+
+/* =========================
+   Sidebar - All Themes
+========================= */
+
+/* Default Theme */
+body .sidebar {
+  position: fixed;
+  top: 69px; /* below header */
+  right: 0;
+  width: 260px;
+  max-width: 100%;
+  height: calc(100% - 69px);
+  background: #ffffff;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  z-index: 1500;
+  overflow-y: auto;
+  transform: translateX(100%); /* hidden by default */
+  border-left: 1px solid #ddd;
+}
+
+body .sidebar.open {
+  transform: translateX(0);
+}
+
+body .sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+body .sidebar p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #333;
+}
+
+body .sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+body .sidebar::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+body .sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* Cool Blue Theme */
+body.cool-blue .sidebar {
+  background: #f0f4ff;
+  border-left: 1px solid #cbd5e1;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.05);
+}
+
+body.cool-blue .sidebar h2,
+body.cool-blue .sidebar p {
+  color: #1e3a8a; /* dark blue text */
+}
+
+body.cool-blue .sidebar::-webkit-scrollbar-track {
+  background: #f0f4ff;
+}
+
+body.cool-blue .sidebar::-webkit-scrollbar-thumb {
+  background-color: #93c5fd;
+}
+
+/* Modern Dark Theme */
+body.modern-dark .sidebar {
+  background: #1b1b1b;
+  border-left: 1px solid #333;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.5);
+}
+
+body.modern-dark .sidebar h2,
+body.modern-dark .sidebar p {
+  color: #e0e0e0;
+}
+
+body.modern-dark .sidebar::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+body.modern-dark .sidebar::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 3px;
 }

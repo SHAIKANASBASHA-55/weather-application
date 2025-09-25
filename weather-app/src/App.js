@@ -192,6 +192,14 @@ function App() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState("default"); // NEW THEME STATE
+
+  // Apply theme to body
+  useEffect(() => {
+    document.body.className = ""; // clear old theme
+    if (theme === "cool-blue") document.body.classList.add("cool-blue");
+    else if (theme === "modern-dark") document.body.classList.add("modern-dark");
+  }, [theme]);
 
   // Detect current location weather on load
   useEffect(() => {
@@ -314,6 +322,18 @@ function App() {
         avgHumidity={avgHumidity}
         maxWind={maxWind}
       />
+
+      {/* THEME SELECTOR */}
+      <div className="theme-selector" style={{ margin: "90px 0 20px", textAlign: "center" }}>
+        <label>
+          Theme:{" "}
+          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <option value="default">Default</option>
+            <option value="cool-blue">Cool Blue</option>
+            <option value="modern-dark">Modern Dark</option>
+          </select>
+        </label>
+      </div>
 
       <div className="search-bar">
         <input
