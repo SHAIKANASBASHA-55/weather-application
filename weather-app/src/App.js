@@ -8,6 +8,7 @@ import { TiLocationArrowOutline } from "react-icons/ti";
 import { CiCloudOn, CiCloudDrizzle, CiSun } from "react-icons/ci";
 
 const API_KEY = "b81b6799c2282dbb9792e9d52e8d2101";
+const BASE_URL = process.env.REACT_APP_WEATHER_API_URL || "https://weather-api-production-d97e.up.railway.app";
 
 // Forecast icons mapping
 const getWeatherIcon = (desc) => {
@@ -196,12 +197,11 @@ function App() {
 
   // Apply theme to body
   useEffect(() => {
-    document.body.className = ""; // clear old theme
+    document.body.className = "";
     if (theme === "cool-blue") document.body.classList.add("cool-blue");
     else if (theme === "modern-dark") document.body.classList.add("modern-dark");
   }, [theme]);
 
-  // Detect current location weather on load
   useEffect(() => {
     detectLocationWeather(true);
   }, []);
@@ -260,7 +260,7 @@ function App() {
 
     const query = newCityList.join(",");
     setLoading(true);
-    axios.get(`http://localhost:3001/weather/cities?names=${query}`)
+    axios.get(`${BASE_URL}/weather/cities?names=${query}`)
       .then(response => {
         if (!response.data || response.data.length === 0) {
           setError("City not found");
@@ -278,20 +278,17 @@ function App() {
       .finally(() => setLoading(false));
   };
 
-  const removeCity = (cityName) => {
-    setCities(prev => prev.filter(city => city.cityName !== cityName));
-  };
+  const removeCity = (cityName) => setCities(prev => prev.filter(city => city.cityName !== cityName));
 
   const toggleFavorite = (cityName) => {
     setCities(prev => prev.map(city => city.cityName === cityName ? { ...city, favorite: !city.favorite } : city));
   };
 
-  // Auto-refresh every 5 minutes
   useEffect(() => {
     const interval = setInterval(() => {
       if (cities.length > 0) {
         const query = cities.map(c => c.cityName).join(",");
-        axios.get(`http://localhost:3001/weather/cities?names=${query}`)
+        axios.get(`${BASE_URL}/weather/cities?names=${query}`)
           .then(response => {
             if (response.data) {
               const refreshedData = response.data.map(c => {
