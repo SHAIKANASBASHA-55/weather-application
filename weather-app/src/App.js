@@ -95,6 +95,97 @@ function RenderingArrayOfCityObjects({ cityData, onRemove, toggleFavorite }) {
   return <div className="card-container">{citylistItems}</div>;
 }
 
+// WeatherNews - design-only component
+function WeatherNews({ count = 5 }) {
+  const ICON_BY_TYPE = {
+    Clear: <CiSun />,
+    Cloudy: <CiCloudOn />,
+    Rain: <CiCloudDrizzle />
+  };
+
+  const SAMPLE_CITIES = [
+    "Rio de Janeiro, BR",
+    "Osaka, JP",
+    "Nairobi, KE",
+    "Toronto, CA",
+    "Sydney, AU",
+    "Berlin, DE",
+    "Mumbai, IN"
+  ];
+
+  const SAMPLE_TITLES = [
+    "Unexpected downpour drenches downtown",
+    "Sun breaks through after overnight clouds",
+    "Light drizzle forces event delays",
+    "Rare early snowfall blankets suburbs",
+    "Strong gusts topple market stalls",
+    "Heat spike triggers local advisories"
+  ];
+
+  const SAMPLE_BODIES = [
+    "Commuters reported heavy puddling on main roads. Light traffic disruption expected.",
+    "Temperatures rose quickly after sunrise; locals enjoyed clear skies by midday.",
+    "Organizers postponed outdoor activities; umbrellas sold out near waterfront.",
+    "Snow coated cars and rooftops; municipal crews started clearing main arteries.",
+    "Several trees uprooted; minor power outages reported in a few neighborhoods.",
+    "Heat index reached uncomfortable levels; hydration stations were set up at parks."
+  ];
+
+  const RandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  const timeAgo = () => {
+    const now = Date.now();
+    const past = now - RandomInt(5 * 60 * 1000, 24 * 60 * 60 * 1000);
+    return new Date(past);
+  };
+
+  const formatRelativeTime = (d) => {
+    const diff = Date.now() - d.getTime();
+    const mins = Math.floor(diff / (60 * 1000));
+    if (mins < 60) return `${mins} min ago`;
+    const hrs = Math.floor(mins / 60);
+    return `${hrs} hr${hrs > 1 ? "s" : ""} ago`;
+  };
+
+  const events = Array(count).fill().map(() => {
+    const city = SAMPLE_CITIES[RandomInt(0, SAMPLE_CITIES.length - 1)];
+    const typeKeys = Object.keys(ICON_BY_TYPE);
+    const type = typeKeys[RandomInt(0, typeKeys.length - 1)];
+    return {
+      city,
+      type,
+      icon: ICON_BY_TYPE[type],
+      title: SAMPLE_TITLES[RandomInt(0, SAMPLE_TITLES.length - 1)],
+      body: SAMPLE_BODIES[RandomInt(0, SAMPLE_BODIES.length - 1)],
+      time: timeAgo(),
+      color: RandomColor()
+    };
+  });
+
+  return (
+    <section className="wn-wrapper">
+      <h2>Weather News <span className="wn-sub">— last 24 hours</span></h2>
+      <div className="wn-list">
+        {events.map((e, i) => (
+          <div className="wn-card" key={i}>
+            <div className="wn-card-left" style={{ background: e.color }}>
+              <div className="wn-icon">{e.icon}</div>
+              <div className="wn-type">{e.type}</div>
+            </div>
+            <div className="wn-card-right">
+              <div className="wn-meta">
+                <span className="wn-city">{e.city}</span>
+                <span className="wn-time">{formatRelativeTime(e.time)}</span>
+              </div>
+              <h3 className="wn-title">{e.title}</h3>
+              <p className="wn-body">{e.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // Main App component
 function App() {
   const [cities, setCities] = useState([]);
@@ -105,7 +196,6 @@ function App() {
   // Detect current location weather on load
   useEffect(() => {
     detectLocationWeather(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const detectLocationWeather = (isAuto = false) => {
@@ -212,7 +302,6 @@ function App() {
   const favoriteCities = cities.filter(c => c.favorite);
   const normalCities = cities.filter(c => !c.favorite);
 
-  // Sidebar stats (now passed to Header)
   const avgTemp = cities.length ? (cities.reduce((sum, c) => sum + c.temperature, 0) / cities.length).toFixed(1) : "-";
   const avgHumidity = cities.length ? (cities.reduce((sum, c) => sum + c.humidity, 0) / cities.length).toFixed(1) : "-";
   const maxWind = cities.length ? Math.max(...cities.map(c => parseFloat(c.wind))) : "-";
@@ -251,10 +340,12 @@ function App() {
 
       <RenderingArrayOfCityObjects cityData={normalCities} onRemove={removeCity} toggleFavorite={toggleFavorite} />
 
+      {/* ======= WEATHER NEWS COMPONENT ======= */}
+      <WeatherNews />
+
       <Footer />
     </div>
   );
 }
-
 
 export default App;
