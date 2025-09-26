@@ -21,7 +21,7 @@ public class WeatherApiApplication extends SpringBootServletInitializer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // allow all endpoints
-                        .allowedOrigins("https://shaikanasbasha-55.github.io/") // React app
+                        .allowedOrigins("https://localhost:3000") // React app
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
