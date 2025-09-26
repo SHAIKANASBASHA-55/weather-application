@@ -2,7 +2,7 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://karthiknvd.github.io/weather-application",
+  "homepage": "https://shaikanasbasha-55.github.io/weather-application",
   "proxy": "http://localhost:3001/weather",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
