@@ -1,10 +1,8 @@
-version: "3.8"
-
 services:
   frontend:
     build:
-      context: ./weather-ui   # 👈 your actual frontend folder name
-    container_name: weather-app
+      context: ./weather-app
+    container_name: weather-frontend
     ports:
       - "3000:80"
     depends_on:
@@ -12,8 +10,8 @@ services:
 
   backend:
     build:
-      context: ./weather-api   # 👈 your actual backend folder name
-    container_name: weather-api
+      context: ./weather-api
+    container_name: weather-backend
     ports:
       - "5000:5000"
     environment:
