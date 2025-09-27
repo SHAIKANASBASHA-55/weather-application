@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: https://github.com/<your-username>/<your-frontend-repo>.git
+    container_name: weather-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: https://github.com/<your-username>/<your-backend-repo>.git
+    container_name: weather-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - WEATHER_APP_ID=${WEATHER_APP_ID}
