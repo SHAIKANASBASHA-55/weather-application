@@ -9,10 +9,10 @@ services:
       - backend
 
   backend:
-    build:
-      context: ./weather-api    # replace with actual folder name
-    container_name: weather-backend
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
+  build:
+    context: ./weather
+  container_name: weather-backend
+  ports:
+    - "9090:8080"   # host:container
+  environment:
+    - SPRING_PROFILES_ACTIVE=prod
