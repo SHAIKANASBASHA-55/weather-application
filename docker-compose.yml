@@ -9,10 +9,10 @@ services:
       - backend
 
   backend:
-  build:
-    context: ./weather
-  container_name: weather-backend
-  ports:
+    build:
+    context: ./weather-api
+    container_name: weather-backend
+    ports:
     - "9090:8080"   # host:container
-  environment:
+    environment:
     - SPRING_PROFILES_ACTIVE=prod
