@@ -2,20 +2,14 @@ version: "3.9"
 
 services:
   frontend:
-    build:
-      context: ./weather-app
-      dockerfile: Dockerfile
-    container_name: weather-frontend
+    image: weather-frontend
     ports:
       - "3000:80"
     depends_on:
       - backend
 
   backend:
-    build:
-      context: ./weather-api
-      dockerfile: Dockerfile
-    container_name: weather-backend
+    image: weather-backend
     ports:
       - "9090:8080"
     environment:
