@@ -3,7 +3,7 @@ version: "3.9"
 services:
   frontend:
     build:
-      context: https://github.com/SHAIKANASBASHA-55/weather-application.git#main:weather-app
+      context: ./weather-app
       dockerfile: Dockerfile
     container_name: weather-frontend
     ports:
@@ -13,7 +13,7 @@ services:
 
   backend:
     build:
-      context: https://github.com/SHAIKANASBASHA-55/weather-application.git#main:weather-api
+      context: ./weather-api
       dockerfile: Dockerfile
     container_name: weather-backend
     ports:
