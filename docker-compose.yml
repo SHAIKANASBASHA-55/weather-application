@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./weather-app
+      context: ./weather-app   # replace with actual folder name
     container_name: weather-frontend
     ports:
       - "3000:80"
@@ -10,10 +10,9 @@ services:
 
   backend:
     build:
-      context: ./weather-api
+      context: ./weather-api    # replace with actual folder name
     container_name: weather-backend
     ports:
-      - "5000:5000"
+      - "8080:8080"
     environment:
-      - NODE_ENV=production
-      - WEATHER_APP_ID=${WEATHER_APP_ID}
+      - SPRING_PROFILES_ACTIVE=prod
